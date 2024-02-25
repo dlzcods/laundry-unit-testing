@@ -68,6 +68,13 @@ class hargaBayar:
             if self.ko < mko:
                 self.ko = mko
             tb = hpk * self.ko
+        ## Perhitungan paket (4) EXPRESS 5 Jam
+        elif self.pkt == 4:
+            self.ket = "Cuci Kering Setrika EXPRESS 5 Jam"
+            hpk = 25000.00
+            self.hr = 1
+
+            tb = hpk * self.ko
 
         print(f"Layanan: {self.ket}")
         print(f"Kuantitas: {self.ko} Kilogram")

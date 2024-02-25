@@ -15,6 +15,7 @@ class TestCalculations(unittest.TestCase):
         self.hb1 = hargaBayar(1, 2, 5)
         self.hb2 = hargaBayar(2, 3, 4)
         self.hb3 = hargaBayar(3, 1, 7)
+        self.hb4 = hargaBayar(4, 1, 2)
 
     def test_harga_CKL(self):
         self.assertEqual(self.hb1.hitungTotal(), 42500.0, "Perhitungan Salah")
@@ -24,6 +25,9 @@ class TestCalculations(unittest.TestCase):
 
     def test_harga_LK(self):
         self.assertEqual(self.hb3.hitungTotal(), 105000.0, "Perhitungan Salah")
+
+    def test_harga_EXP(self):
+        self.assertEqual(self.hb4.hitungTotal(), 50000.0, "Perhitungan Salah")
 
 
 if __name__ == "__main__":
