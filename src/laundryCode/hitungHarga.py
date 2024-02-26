@@ -9,7 +9,8 @@ pkt = Paket
 Pilihan paket:
 1. Cuci Kering Lipat
 2. Cuci Kering Setrika
-3. Legkap Kilat
+3. Lengkap Kilat
+4. Express
 """
 
 
@@ -40,6 +41,7 @@ class hargaBayar:
             else:
                 if self.ko <= 3:
                     self.ko = mko
+            
             tb = hpk * self.ko
 
         ## Perhitungan pket (2) Cuci Kering Setrika
@@ -57,17 +59,20 @@ class hargaBayar:
             else:
                 if self.ko <= 3:
                     self.ko = mko
+            
             tb = hpk * self.ko
 
         ## Perhitungan paket (3) LENGKAP KILAT 1 HARI
         elif self.pkt == 3:
             self.ket = "Cuci Kering Setrika KILAT 1 HARI"
-            hpk = 15000.00
             self.hr = 1
+            hpk = 15000.00
 
             if self.ko < mko:
                 self.ko = mko
+            
             tb = hpk * self.ko
+            
         ## Perhitungan paket (4) EXPRESS 5 Jam
         elif self.pkt == 4:
             self.ket = "Cuci Kering Setrika EXPRESS 5 Jam"
