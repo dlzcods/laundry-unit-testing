@@ -93,7 +93,9 @@ class calcPayment:
         print(f"Processing time: {self.dy} Day")
         print(f"Total Payment: Rp{tpy}")
         print("\nThank You for Ordering")
-        return tpy
+        return (
+            tpy  # You can change this to a blank string when you not doing unit testing
+        )
 
 
 # Test the calculation
