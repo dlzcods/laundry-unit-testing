@@ -12,22 +12,22 @@ from laundryCode.hitungHarga import calcPayment
 class TestCalculations(unittest.TestCase):
 
     def setUp(self):
-        self.hb1 = calcPayment(1, 2, 5)
-        self.hb2 = calcPayment(2, 5, 3)
-        self.hb3 = calcPayment(3, 5, 1)
-        self.hb4 = calcPayment(4, 4, 1)
+        self.tp1 = calcPayment(1, 2, 5)
+        self.tp2 = calcPayment(2, 5, 3)
+        self.tp3 = calcPayment(3, 5, 1)
+        self.tp4 = calcPayment(4, 4, 1)
 
-    def test_harga_CKL(self):
-        self.assertEqual(self.hb1.countTotal(), 21000.0, "Perhitungan Salah")
+    def test_harga_FDC(self):
+        self.assertEqual(self.tp1.countTotal(), 21000.0, "Incorrect calculation")
 
-    def test_harga_CKS(self):
-        self.assertEqual(self.hb2.countTotal(), 50000.0, "Perhitungan Salah")
+    def test_harga_IDC(self):
+        self.assertEqual(self.tp2.countTotal(), 50000.0, "Incorrect calculation")
 
-    def test_harga_LK(self):
-        self.assertEqual(self.hb3.countTotal(), 75000.0, "Perhitungan Salah")
+    def test_harga_CEP(self):
+        self.assertEqual(self.tp3.countTotal(), 75000.0, "Incorrect calculation")
 
-    def test_harga_EXP(self):
-        self.assertEqual(self.hb4.countTotal(), 100000.0, "Perhitungan Salah")
+    def test_harga_SEP(self):
+        self.assertEqual(self.tp4.countTotal(), 100000.0, "Incorrect calculation")
 
 
 if __name__ == "__main__":

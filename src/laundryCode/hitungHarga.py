@@ -78,7 +78,7 @@ class calcPayment:
         elif self.pkg == 4:
             self.desc = "Speedy Express"
             prk = 25000.00
-            self.dy = 1
+            self.dy = 0.2083
 
             tpy = prk * self.ko
 
@@ -96,10 +96,6 @@ class calcPayment:
         return tpy
 
 
-# Uncomment the syntax below if you want to do calculations
-
-"""
 # Test the calculation
-order = calcPayment(4, 4, 1) # calcPayment(package, quantity, processing time(day))
+order = calcPayment(4, 4, 1)  # calcPayment(package, quantity, processing time(day))
 print(order.countTotal())
-"""
