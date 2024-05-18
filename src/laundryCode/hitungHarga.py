@@ -1,88 +1,105 @@
 """
-Keterangan
-mko = Minimum Kilo
-hpk = Harga Per Kilo
-hr = Hari
-tb =  Total Bayar
-pkt = Paket
+Description
+mko = Minimum Kilogram
+prk = Price Per Kilogram
+dy = Day
+tpy = Total Pay
+pkg = Package
+desc = Package Name
 
-Pilihan paket:
-1. Cuci Kering Lipat
-2. Cuci Kering Setrika
-3. Lengkap Kilat
-4. Express
+Package options:
+1. Folded Dry Cleaning
+2. Iron Dry Cleaning
+3. Complete Express
+4. Speedy Express
 """
 
 
-class hargaBayar:
-    def __init__(self, pkt, hr, ko):
-        self.pkt = pkt
-        self.hr = hr
+class calcPayment:
+    def __init__(self, pkg, ko, dy):
+        self.pkg = pkg
         self.ko = ko
-        self.ket = None
+        self.dy = dy
+        self.desc = None
 
-    def hitungTotal(self):
+    def countTotal(self):
         mko = 3.00
-        hpk = 0.00
-        tb = 0.00
+        prk = 0.00
+        tpy = 0.00
 
-        ## Perhitungan paket (1) Cuci Kering Lipat
-        if self.pkt == 1:
-            self.ket = "Cuci Kering Lipat"
-            hpk = 7000.00
+        ## Package calculations (1) Folded Dry Cleaning
+        if self.pkg == 1:
+            self.desc = "Folded Dry Cleaning"
+            prk = 7000.00
 
-            if self.hr < 3:
-                if self.hr > 1:
-                    hpk = 8500.00
+            if self.dy < 3:
+                if self.dy > 1:
+                    prk = 8500.00
                     if self.ko < mko:
                         self.ko = mko
-                elif self.hr < 2:
-                    raise ValueError("Pengerjaan paling cepat 2 hari")
+                elif self.dy < 2:
+                    raise ValueError("Folded Dry Cleaning at the earliest 2 days")
             else:
                 if self.ko <= 3:
                     self.ko = mko
-            
-            tb = hpk * self.ko
 
-        ## Perhitungan pket (2) Cuci Kering Setrika
-        elif self.pkt == 2:
-            self.ket = "Cuci Kering Setrika"
-            hpk = 10000.00
+            tpy = prk * self.ko
 
-            if self.hr < 3:
-                if self.hr > 1:
-                    hpk = 12000.00
+        ## Package calculations (2) Iron Dry Cleaning
+        elif self.pkg == 2:
+            self.desc = "Iron Dry Cleaning"
+            prk = 10000.00
+
+            if self.dy < 3:
+                if self.dy > 1:
+                    prk = 12000.00
                     if self.ko < mko:
                         self.ko = mko
-                elif self.hr < 2:
-                    raise ValueError("Pengerjaan paling cepat 2 hari")
+                elif self.dy < 2:
+                    raise ValueError("Iron Dry Cleaning at the earliest 2 days")
             else:
                 if self.ko <= 3:
                     self.ko = mko
-            
-            tb = hpk * self.ko
 
-        ## Perhitungan paket (3) LENGKAP KILAT 1 HARI
-        elif self.pkt == 3:
-            self.ket = "Cuci Kering Setrika KILAT 1 HARI"
-            self.hr = 1
-            hpk = 15000.00
+            tpy = prk * self.ko
+
+        ## Package calculations (3) Complete Express in 1 day
+        elif self.pkg == 3:
+            self.desc = "Complete Express"
+            self.dy = 1
+            prk = 15000.00
 
             if self.ko < mko:
                 self.ko = mko
-            
-            tb = hpk * self.ko
-            
-        ## Perhitungan paket (4) EXPRESS 5 Jam
-        elif self.pkt == 4:
-            self.ket = "Cuci Kering Setrika EXPRESS 5 Jam"
-            hpk = 25000.00
-            self.hr = 1
 
-            tb = hpk * self.ko
+            tpy = prk * self.ko
 
-        print(f"Layanan: {self.ket}")
-        print(f"Kuantitas: {self.ko} Kilogram")
-        print(f"Waktu pengerjaan: {self.hr} Hari")
-        print("Total Bayar:")
-        return tb
+        ## Package calculations (4) Speedy Express in 5 hours
+        elif self.pkg == 4:
+            self.desc = "Speedy Express"
+            prk = 25000.00
+            self.dy = 1
+
+            tpy = prk * self.ko
+
+        print("Note:")
+        print("1. Orders under 3 kilograms will be counted as a minimum order (3kg).")
+        print(
+            "2. Only Complete Express and Speedy Express packages are available for orders under or equal to 1 day."
+        )
+        print("\nHere is Your Payment")
+        print(f"Package: {self.desc}")
+        print(f"Quantity: {self.ko} Kilogram")
+        print(f"Processing time: {self.dy} Day")
+        print(f"Total Payment: Rp{tpy}")
+        print("\nThank You for Ordering")
+        return tpy
+
+
+# Uncomment the syntax below if you want to do calculations
+
+"""
+# Test the calculation
+order = calcPayment(4, 4, 1) # calcPayment(package, quantity, processing time(day))
+print(order.countTotal())
+"""
